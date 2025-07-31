@@ -91,6 +91,13 @@ st.markdown("""
         transform: translateY(-2px);
         box-shadow: 0 6px 12px rgba(110, 181, 47, 0.3);
     }
+
+    .input-card h1, .input-card h2, .input-card h3, .input-card p {
+        color: white !important;
+    }
+    .stSlider label, .stSlider div {
+        color: white !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -117,12 +124,16 @@ with st.container():
             st.header("Personal Metrics")
 
             pregnancies = st.slider("Pregnancies", 0, 20, 1,
-                                    help="Number of times pregnant")
-            age = st.slider("Age", 0, 100, 25)
+                                    help="Number of times pregnant",
+                                    key="pregnancies_slider")
+            age = st.slider("Age", 0, 100, 25,
+                            key="age_slider")
             bmi = st.slider("BMI", 0.0, 70.0, 25.0, step=0.1,
-                            help="Body Mass Index")
+                            help="Body Mass Index",
+                            key="bmi_slider")
             dpf = st.slider("Diabetes Pedigree", 0.0, 3.0, 0.5, step=0.01,
-                            help="Genetic predisposition")
+                            help="Genetic predisposition",
+                            key="dpf_slider")
             st.markdown('</div>', unsafe_allow_html=True)
 
     with col2:
@@ -130,13 +141,17 @@ with st.container():
             st.markdown('<div class="input-card">', unsafe_allow_html=True)
             st.header("Biochemical Metrics")
             glucose = st.slider("Glucose (mg/dL)", 0, 200, 100,
-                                help="Plasma glucose concentration")
+                                help="Plasma glucose concentration",
+                                key="glucose_slider")
             bp = st.slider("Blood Pressure (mmHg)", 0, 130, 70,
-                           help="Diastolic blood pressure")
+                           help="Diastolic blood pressure",
+                           key="bp_slider")
             skin_thickness = st.slider("Skin Thickness (mm)", 0, 100, 20,
-                                       help="Triceps skinfold thickness")
+                                       help="Triceps skinfold thickness",
+                                       key="skin_thickness_slider")
             insulin = st.slider("Insulin (μU/mL)", 0, 300, 80,
-                                help="2-Hour serum insulin")
+                                help="2-Hour serum insulin",
+                                key="insulin_slider")
             st.markdown('</div>', unsafe_allow_html=True)
 
 # --- Prediction Button ---
